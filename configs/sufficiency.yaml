@@ -1,0 +1,24 @@
+retriever:
+  retriever_name: MedCPT
+  corpus_name: Textbooks
+  db_dir: ./corpus
+  k: 10
+
+llm:
+  llm_name: OpenAI/gpt-3.5-turbo
+  temperature: 0.0
+  context_length: 15000
+
+benchmark:
+  scenario: sufficiency
+  n_docs: 10
+  signal_ratios: [0, 20, 40, 60, 80, 100]
+  use_online_retrieval: false
+
+datasets:
+  - bioasq
+  - pubmedqa
+  - medqa
+  - mmlu
+
+output_dir: ./results/sufficiency
