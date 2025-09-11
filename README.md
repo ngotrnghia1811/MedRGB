@@ -1,7 +1,7 @@
 # MedRGB
 
 **"MedRGB: Practical Framework for Benchmarking Medical Retrieval-Augmented Generation Systems"** \
-Nghia Trung Ngo et al. — AAAI 2026
+Nghia Trung Ngo et al. — AAAI 2026 &nbsp;|&nbsp; [Paper](https://arxiv.org/abs/2411.09213)
 
 MedRGB is a benchmarking framework that evaluates medical RAG systems across **four practical test scenarios**: Standard-RAG, Sufficiency, Integration, and Robustness. It goes beyond accuracy to assess reliability and trustworthiness criteria essential for medical AI.
 
@@ -26,6 +26,8 @@ Question → Topic Generation → Offline/Online Retrieval → Signal Documents
                                               Sub-QA Generation (Integration)
                                               Counterfactual Editing (Robustness)
 ```
+
+![MedRGB creation pipeline](docs/DataGenFlow.png)
 
 - **Topic Generation**: GPT-4o generates ranked retrieval sub-topics per question to improve retrieval diversity.
 - **Offline Retrieval**: MedCPT queries MedCorp (PubMed + StatPearls + Textbooks + Wikipedia).
@@ -123,39 +125,6 @@ bash scripts/run_standard.sh
 bash scripts/run_sufficiency.sh
 bash scripts/run_integration.sh
 bash scripts/run_robustness.sh
-```
-
-## Project Structure
-
-```
-MedRGB/
-├── medrgb/
-│   ├── config.py       # Dataclass configs (RetrieverConfig, LLMConfig, BenchmarkConfig)
-│   ├── retrieval.py    # Retriever, RetrievalSystem, embed_corpus, build_faiss_index
-│   ├── inference.py    # MedRAGInference (all 4 scenarios + LFQA variants)
-│   ├── benchmark.py    # MedRGBBenchmark, TopicGenerator, SubQAGenerator, CounterfactualGenerator
-│   ├── evaluate.py     # MedRGBEvaluator (accuracy, noise detection, factual error detection)
-│   └── prompts.py      # All prompt templates (Standard, Sufficiency, Integration, Robustness, LFQA)
-├── data/
-│   ├── README.md       # Data acquisition instructions
-│   ├── statpearls.py   # StatPearls NXML chunker
-│   ├── pubmed.py       # PubMed XML.gz chunker
-│   ├── textbooks.py    # Textbook .txt chunker
-│   └── wikipedia.py    # Wikipedia HuggingFace chunker
-├── configs/
-│   ├── standard_rag.yaml
-│   ├── sufficiency.yaml
-│   ├── integration.yaml
-│   └── robustness.yaml
-├── scripts/
-│   ├── build_benchmark.py  # Benchmark creation pipeline
-│   ├── run_evaluate.py     # Main evaluation script
-│   ├── run_standard.sh
-│   ├── run_sufficiency.sh
-│   ├── run_integration.sh
-│   └── run_robustness.sh
-├── requirements.txt
-└── setup.py
 ```
 
 ## Citation
