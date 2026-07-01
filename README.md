@@ -27,23 +27,6 @@ print(dataset[0]["question"])
 
 Available configs: `bioasq`, `pubmedqa`, `medqa`, `mmlu`, `medlfqa`.
 
-### Citation
-
-If you use this dataset, please cite:
-
-```bibtex
-@inproceedings{ngo2026medrgb,
-    title     = {Med{RGB}: Practical Framework for Benchmarking Medical
-                 Retrieval-Augmented Generation Systems},
-    author    = {Ngo, Nghia Trung and Nguyen, Chien Van and
-                 Dernoncourt, Franck and Nguyen, Thien Huu},
-    booktitle = {Proceedings of the AAAI 2026 Workshop on AI for
-                 Scientific Research ({AI4Research})},
-    year      = {2026},
-    month     = jan,
-    note      = {arXiv:2411.09213},
-}
-```
 
 ## Overview
 
