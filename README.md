@@ -53,7 +53,7 @@ Existing medical RAG benchmarks measure only target accuracy. MedRGB extends eva
 |----------|-------------|-----------|
 | **Standard-RAG** | Accuracy with signal documents only | Accuracy |
 | **Sufficiency** | Handle noise docs; detect insufficient info | Accuracy, Noise Detection Rate, Insuf. Rate |
-| **Integration** | Answer sub-questions and integrate for main answer | Accuracy, Sub-QA Exact Match, Token F1 |
+| **Integration** | Answer sub-questions and integrate for main answer | Accuracy, Sub-QA Exact Match, GPT-based Score |
 | **Robustness** | Detect and correct adversarial misinformation | Accuracy, Factual Error Detection Rate |
 
 Each non-standard scenario is evaluated over `p_sig ∈ {0, 20, 40, 60, 80, 100}`, the percentage of signal documents in the retrieved context.
@@ -75,21 +75,7 @@ Question → Topic Generation → Offline/Online Retrieval → Signal Documents
 - **Sub-QA Generation**: GPT-4o generates one sub-question per signal document.
 - **Counterfactual Editing**: GPT-4o adversarially edits documents to introduce plausible misinformation.
 
-## 📦 Dataset
 
-The MedRGB benchmark is available on HuggingFace:
-
-[![HuggingFace Dataset](https://img.shields.io/badge/🤗_HuggingFace-MedRGB-yellow)](https://huggingface.co/datasets/ngotrnghia1811/MedRGB)
-
-```python
-from datasets import load_dataset
-
-# Load any config (bioasq, pubmedqa, medqa, mmlu, medlfqa)
-dataset = load_dataset("ngotrnghia1811/MedRGB", "bioasq", split="bioasq")
-print(dataset[0]["question"])
-```
-
-**3,680 benchmark instances** across 5 medical QA datasets. Each instance includes question, answer, signal documents, noise documents, sub-QA pairs, and counterfactual documents.
 
 ## Datasets
 
@@ -157,7 +143,7 @@ For open-source models, Java is required for BM25 retrieval (`pyserini`).
 from medrgb import MedRAGInference
 from medrgb.config import LLMConfig, RetrieverConfig
 
-llm_cfg = RetrieverConfig = LLMConfig(llm_name="OpenAI/gpt-3.5-turbo")
+llm_cfg = LLMConfig(llm_name="OpenAI/gpt-3.5-turbo")
 ret_cfg = RetrieverConfig(retriever_name="MedCPT", corpus_name="Textbooks")
 
 model = MedRAGInference(llm_cfg, ret_cfg, rag=True)
