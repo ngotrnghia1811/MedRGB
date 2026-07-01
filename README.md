@@ -5,6 +5,46 @@ Nghia Trung Ngo et al. — AAAI 2026 &nbsp;|&nbsp; [Paper](https://arxiv.org/abs
 
 MedRGB is a benchmarking framework that evaluates medical RAG systems across **four practical test scenarios**: Standard-RAG, Sufficiency, Integration, and Robustness. It goes beyond accuracy to assess reliability and trustworthiness criteria essential for medical AI.
 
+## 📦 Dataset
+
+The **MedRGB Benchmark** dataset is available on HuggingFace:
+
+[![HuggingFace Dataset](https://img.shields.io/badge/🤗_HuggingFace-MedRGB-yellow)](https://huggingface.co/datasets/ngotrnghia1811/MedRGB)
+
+> **MedRGB: Practical Framework for Benchmarking Medical Retrieval-Augmented Generation Systems** (AAAI 2026 Workshop AI4Research)
+> 
+> 3,680 benchmark instances across 5 medical QA datasets (BioASQ-Y/N, PubMedQA, MedQA-US, MMLU-Med, MedLFQA) testing 4 RAG scenarios: Standard-RAG, Sufficiency, Integration, and Robustness.
+
+### Load the dataset
+
+```python
+from datasets import load_dataset
+
+# Load any config
+dataset = load_dataset("ngotrnghia1811/MedRGB", "bioasq", split="bioasq")
+print(dataset[0]["question"])
+```
+
+Available configs: `bioasq`, `pubmedqa`, `medqa`, `mmlu`, `medlfqa`.
+
+### Citation
+
+If you use this dataset, please cite:
+
+```bibtex
+@inproceedings{ngo2026medrgb,
+    title     = {Med{RGB}: Practical Framework for Benchmarking Medical
+                 Retrieval-Augmented Generation Systems},
+    author    = {Ngo, Nghia Trung and Nguyen, Chien Van and
+                 Dernoncourt, Franck and Nguyen, Thien Huu},
+    booktitle = {Proceedings of the AAAI 2026 Workshop on AI for
+                 Scientific Research ({AI4Research})},
+    year      = {2026},
+    month     = jan,
+    note      = {arXiv:2411.09213},
+}
+```
+
 ## Overview
 
 Existing medical RAG benchmarks measure only target accuracy. MedRGB extends evaluation to capture:
@@ -131,9 +171,14 @@ bash scripts/run_robustness.sh
 
 ```bibtex
 @inproceedings{ngo2026medrgb,
-  title     = {MedRGB: Practical Framework for Benchmarking Medical Retrieval-Augmented Generation Systems},
-  author    = {Ngo, Nghia Trung and others},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  year      = {2026}
+    title     = {Med{RGB}: Practical Framework for Benchmarking Medical
+                 Retrieval-Augmented Generation Systems},
+    author    = {Ngo, Nghia Trung and Nguyen, Chien Van and
+                 Dernoncourt, Franck and Nguyen, Thien Huu},
+    booktitle = {Proceedings of the AAAI 2026 Workshop on AI for
+                 Scientific Research ({AI4Research})},
+    year      = {2026},
+    month     = jan,
+    note      = {arXiv:2411.09213},
 }
 ```
