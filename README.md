@@ -75,6 +75,22 @@ Question → Topic Generation → Offline/Online Retrieval → Signal Documents
 - **Sub-QA Generation**: GPT-4o generates one sub-question per signal document.
 - **Counterfactual Editing**: GPT-4o adversarially edits documents to introduce plausible misinformation.
 
+## 📦 Dataset
+
+The MedRGB benchmark is available on HuggingFace:
+
+[![HuggingFace Dataset](https://img.shields.io/badge/🤗_HuggingFace-MedRGB-yellow)](https://huggingface.co/datasets/ngotrnghia1811/MedRGB)
+
+```python
+from datasets import load_dataset
+
+# Load any config (bioasq, pubmedqa, medqa, mmlu, medlfqa)
+dataset = load_dataset("ngotrnghia1811/MedRGB", "bioasq", split="bioasq")
+print(dataset[0]["question"])
+```
+
+**3,680 benchmark instances** across 5 medical QA datasets. Each instance includes question, answer, signal documents, noise documents, sub-QA pairs, and counterfactual documents.
+
 ## Datasets
 
 Four medical QA datasets from [MIRAGE](https://github.com/Teddy-XiongGZ/MIRAGE):
